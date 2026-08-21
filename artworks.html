@@ -54,6 +54,35 @@ h1{
 .back-link a{
     text-decoration:none;
 }
+.lightbox {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.9);
+    align-items: center;
+    justify-content: center;
+}
+
+.lightbox img {
+    max-width: 90%;
+    max-height: 90%;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+}
+
+.lightbox-close {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    color: white;
+    font-size: 40px;
+    cursor: pointer;
+}
 </style>
 </head>
 
@@ -90,55 +119,61 @@ Through these works, I explore tensions between the natural and the artificial, 
 <div class="gallery">
 
 <div class="artwork">
-<a href="natural-humonsters/HUCLIFFMON.jpg" target="_blank">
-<img src="natural-humonsters/HUCLIFFMON.jpg" alt="HUCLIFFMON">
-</a>
+<img src="natural-humonsters/HUCLIFFMON.jpg" alt="HUCLIFFMON" onclick="openLightbox(this.src)">
 <p><strong>HUCLIFFMON</strong></p>
 </div>
 
 <div class="artwork">
-<a href="natural-humonsters/HULICHEMON.jpg" target="_blank">
-<img src="natural-humonsters/HULICHEMON.jpg" alt="HULICHEMON">
-</a>
+<img src="natural-humonsters/HULICHEMON.jpg" alt="HULICHEMON" onclick="openLightbox(this.src)">
 <p><strong>HULICHEMON</strong></p>
 </div>
 
 <div class="artwork">
-<a href="natural-humonsters/HUMUDMON.jpg" target="_blank">
-<img src="natural-humonsters/HUMUDMON.jpg" alt="HUMUDMON">
-</a>
+<img src="natural-humonsters/HUMUDMON.jpg" alt="HUMUDMON" onclick="openLightbox(this.src)">
 <p><strong>HUMUDMON</strong></p>
 </div>
 
 <div class="artwork">
-<a href="natural-humonsters/HUROCKMON.jpg" target="_blank">
-<img src="natural-humonsters/HUROCKMON.jpg" alt="HUROCKMON">
-</a>
+<img src="natural-humonsters/HUROCKMON.jpg" alt="HUROCKMON" onclick="openLightbox(this.src)">
 <p><strong>HUROCKMON</strong></p>
 </div>
 
 <div class="artwork">
-<a href="natural-humonsters/HUROCKWOODMON.jpg" target="_blank">
-<img src="natural-humonsters/HUROCKWOODMON.jpg" alt="HUROCKWOODMON">
-</a>
+<img src="natural-humonsters/HUROCKWOODMON.jpg" alt="HUROCKWOODMON" onclick="openLightbox(this.src)">
 <p><strong>HUROCKWOODMON</strong></p>
 </div>
 
 <div class="artwork">
-<a href="natural-humonsters/HUSTONMON.jpg" target="_blank">
-<img src="natural-humonsters/HUSTONMON.jpg" alt="HUSTONMON">
-</a>
+<img src="natural-humonsters/HUSTONMON.jpg" alt="HUSTONMON" onclick="openLightbox(this.src)">
 <p><strong>HUSTONMON</strong></p>
 </div>
 
 <div class="artwork">
-<a href="natural-humonsters/HUWOODMON.jpg" target="_blank">
-<img src="natural-humonsters/HUWOODMON.jpg" alt="HUWOODMON">
-</a>
+<img src="natural-humonsters/HUWOODMON.jpg" alt="HUWOODMON" onclick="openLightbox(this.src)">
 <p><strong>HUWOODMON</strong></p>
 </div>
 
 </div>
+<div id="lightbox" class="lightbox">
+    <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
+    <img id="lightbox-image" src="" alt="">
+</div>
 
+<script>
+function openLightbox(src) {
+    document.getElementById("lightbox-image").src = src;
+    document.getElementById("lightbox").style.display = "flex";
+}
+
+function closeLightbox() {
+    document.getElementById("lightbox").style.display = "none";
+}
+
+document.getElementById("lightbox").addEventListener("click", function(event) {
+    if (event.target === this) {
+        closeLightbox();
+    }
+});
+</script>
 </body>
 </html>
